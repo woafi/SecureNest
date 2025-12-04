@@ -39,9 +39,9 @@ app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
 });
 
 // Start server
-app.listen(PORT, () => {
-    console.log(`🔒 SecureNest API running on http://localhost:${PORT}`);
-    console.log(`📊 Health check: http://localhost:${PORT}/health`);
-});
+// app.listen(PORT, () => {
+//     console.log(`🔒 SecureNest API running on http://localhost:${PORT}`);
+//     console.log(`📊 Health check: http://localhost:${PORT}/health`);
+// });
 
 export default app;
