@@ -6,12 +6,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-@theme {
-  /* colors */
-
-
-}
-
 * {
   text-decoration: none;
   list-style: none;

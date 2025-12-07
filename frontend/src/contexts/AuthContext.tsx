@@ -11,6 +11,7 @@ import {
 } from 'firebase/auth';
 import { auth } from '../config/firebase';
 import api from '../services/api';
+import firebase from 'firebase/compat/app';
 
 interface AuthContextType {
     user: User | null;
@@ -38,7 +39,6 @@ interface AuthProviderProps {
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(true);
-    const [error, setErrors] = useState(null);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -54,29 +54,36 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             const result = await createUserWithEmailAndPassword(auth, email, password);
 
             // Register user in backend
-            await api.post('/api/auth/signup', {
-                email: result.user.email,
-                name: name || '',
-            });
-            
+            if (result.user.email) {
+                const response: any = await api.post('/api/auth/signup', {
+                    email: result.user.email,
+                    name: name || '',
+                });
+                return response.data.message;
+            }
         } catch (error: any) {
-            console.error('Signup error:', error);
-            // setErrors()
-            throw error;
+            console.error(error.message);
+            if (error.message.includes("email")) {
+                throw new Error("Email is already in use")
+            } else {
+                throw new Error("Failed to sign up")
+            }
         }
     };
 
     const login = async (email: string, password: string) => {
         try {
-            // await signInWithEmailAndPassword(auth, email, password);
-
+            await signInWithEmailAndPassword(auth, email, password);
+            
             // Verify with backend
-            const response: any = await api.post('/api/auth/login');
-            console.log(response.ok)
-
+            await api.post('/api/auth/login');
         } catch (error: any) {
-            console.error('Login error:', error);
-            throw error;
+            console.error(error);
+            if (error.message.includes("email")) {
+                throw new Error("Email is already in use")
+            } else {
+                throw new Error("Failed to Login")
+            }
         }
     };
 
@@ -101,7 +108,6 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             }
         } catch (error: any) {
             console.error('Google login error:', error);
-            throw error;
         }
     };
 
