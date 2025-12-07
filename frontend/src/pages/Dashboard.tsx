@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Plus, Search, Loader, AlertCircle } from 'lucide-react';
+import { Plus, Loader, AlertCircle } from 'lucide-react';
 import api from '../services/api';
 
 import DashboardHeader from '../components/DashboardHeader';

@@ -11,7 +11,6 @@ import {
 } from 'firebase/auth';
 import { auth } from '../config/firebase';
 import api from '../services/api';
-import firebase from 'firebase/compat/app';
 
 interface AuthContextType {
     user: User | null;

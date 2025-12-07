@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Mail, Lock, User, AlertCircle, CheckCircle } from 'lucide-react';
+import { Mail, User, AlertCircle, CheckCircle } from 'lucide-react';
 import { FiLock, FiEye, FiEyeOff } from 'react-icons/fi';
 
 import Input from '../components/Input';

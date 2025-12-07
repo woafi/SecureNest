@@ -10,7 +10,7 @@ interface PasswordCardProps {
     onClick: () => void;
 }
 
-const PasswordCard: React.FC<PasswordCardProps> = ({ id, title, username, url, onClick }) => {
+const PasswordCard: React.FC<PasswordCardProps> = ({ title, username, url, onClick }) => {
     const [isHovered, setIsHovered] = useState(false);
 
     const getInitials = (name: string) => {

@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { User, Mail, Shield } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { useTheme } from '../contexts/ThemeContext';
-import Navbar from '../components/Navbar';
 
 const Settings: React.FC = () => {
     const { user } = useAuth();
