@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles, X, Save } from 'lucide-react';
+import { Sparkles, X, Save, Eye, EyeOff } from 'lucide-react';
 
 interface EditForm {
     title: string;
@@ -31,6 +31,8 @@ const PasswordEditMode: React.FC<PasswordEditModeProps> = ({
     const updateField = (field: keyof EditForm, value: string) => {
         setEditForm(prev => ({ ...prev, [field]: value }));
     };
+    const [isShown, setIsShown] = useState<boolean>(false);
+    const handleShownPassword = () => setIsShown((prev) => !prev);
 
     return (
         <div className="space-y-6">
@@ -73,13 +75,27 @@ const PasswordEditMode: React.FC<PasswordEditModeProps> = ({
             >
                 <label className="block text-sm font-semibold mb-2 text-gray-700 dark:text-gray-300">Password</label>
                 <div className="flex space-x-3">
-                    <input
-                        type="password"
-                        value={editForm.password}
-                        onChange={(e) => updateField('password', e.target.value)}
-                        className="flex-1 px-4 py-3 bg-gray-50 dark:bg-slate-900 border-2 border-gray-200 dark:border-slate-700 rounded-xl focus:border-emerald-500 dark:focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 dark:focus:ring-emerald-900/30 outline-none transition-all duration-300 text-gray-900 dark:text-white"
-                        required
-                    />
+                    <div className='flex items-center flex-1 relative'>
+                        <input
+                            type={isShown ? "text" : "password"}
+                            value={editForm.password}
+                            onChange={(e) => updateField('password', e.target.value)}
+                            className="flex-1 px-4 py-3 bg-gray-50 dark:bg-slate-900 border-2 border-gray-200 dark:border-slate-700 rounded-xl focus:border-emerald-500 dark:focus:border-emerald-500 focus:ring-4 focus:ring-emerald-100 dark:focus:ring-emerald-900/30 outline-none transition-all duration-300 text-gray-900 dark:text-white"
+                            required
+                        />
+                        <motion.button
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                            type="button"
+                            onClick={handleShownPassword}
+                            className='absolute right-3 cursor-pointer hover:text-emerald-600 dark:hover:text-emerald-400 text-gray-400'>
+                            {isShown ? (
+                                <Eye className="w-5 h-5" />
+                            ) : (
+                                <EyeOff className="w-5 h-5" />
+                            )}
+                        </motion.button>
+                    </div>
                     <motion.button
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
