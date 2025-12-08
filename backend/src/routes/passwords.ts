@@ -24,8 +24,8 @@ router.post(
         body("title").notEmpty().withMessage("Title is required"),
         body("password").notEmpty().withMessage("Password is required"),
         body("username").optional().isString(),
-        body("url").optional().isURL().withMessage("Must be a valid URL"),
-        body("notes").optional().isString(),
+        body("url").optional({ checkFalsy: true }).isURL().withMessage("Must be a valid URL"),
+        body("notes").optional({ checkFalsy: true }).isString(),
     ],
     createPassword
 );
@@ -45,8 +45,8 @@ router.put(
         body("title").optional().notEmpty().withMessage("Title cannot be empty"),
         body("password").optional().notEmpty().withMessage("Password cannot be empty"),
         body("username").optional().isString(),
-        body("url").optional().isURL().withMessage("Must be a valid URL"),
-        body("notes").optional().isString(),
+        body("url").optional({ checkFalsy: true }).isURL().withMessage("Must be a valid URL"),
+        body("notes").optional({ checkFalsy: true }).isString(),
     ],
     updatePassword
 );

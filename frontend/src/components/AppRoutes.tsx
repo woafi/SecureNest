@@ -10,6 +10,7 @@ import Dashboard from '../pages/Dashboard';
 import ViewPassword from '../pages/ViewPassword';
 import AddPassword from '../pages/AddPassword';
 import Settings from '../pages/Settings';
+import NotFound from '../pages/NotFound';
 
 const AppRoutes: React.FC = () => {
     return (
@@ -28,6 +29,9 @@ const AppRoutes: React.FC = () => {
                 <Route path="/password/:id" element={<ViewPassword />} />
                 <Route path="/settings" element={<Settings />} />
             </Route>
+
+            {/* Catch-all 404 Route */}
+            <Route path="*" element={<NotFound />} />
         </Routes>
     );
 }

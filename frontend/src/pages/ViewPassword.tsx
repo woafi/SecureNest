@@ -79,13 +79,18 @@ const ViewPassword: React.FC = () => {
     const handleUpdate = async () => {
         setError('');
         setLoading(true);
-
         try {
             await api.put(`/api/passwords/${id}`, editForm);
             await fetchPassword();
             setIsEditing(false);
         } catch (err: any) {
-            setError(err.response?.data?.error || 'Failed to update password');
+            // Handle validation errors
+            if (err.response?.data?.errors) {
+                const errorMessages = err.response.data.errors.map((e: any) => e.msg).join(', ');
+                setError(errorMessages);
+            } else {
+                setError(err.response?.data?.error || 'Failed to save password');
+            }
         } finally {
             setLoading(false);
         }
