@@ -29,6 +29,7 @@ const ViewPassword: React.FC = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
     const [copied, setCopied] = useState(false);
+    const [copiedUser, setCopiedUser] = useState(false);
     const [showGenerator, setShowGenerator] = useState(false);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
@@ -72,6 +73,14 @@ const ViewPassword: React.FC = () => {
             navigator.clipboard.writeText(password.password);
             setCopied(true);
             setTimeout(() => setCopied(false), 2000);
+        }
+    };
+    // Handle copy user/email
+    const handleCopyUsername = () => {
+        if (password) {
+            navigator.clipboard.writeText(password.username!);
+            setCopiedUser(true);
+            setTimeout(() => setCopiedUser(false), 2000);
         }
     };
 
@@ -171,7 +180,7 @@ const ViewPassword: React.FC = () => {
                         whileHover={{ x: -5 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => navigate('/dashboard')}
-                        className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 mb-4 transition-colors duration-300 group"
+                        className="cursor-pointer flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 mb-4 transition-colors duration-300 group"
                     >
                         <ArrowLeft className="w-5 h-5 transition-transform duration-300 group-hover:-translate-x-1" />
                         <span className="font-medium">Back to Dashboard</span>
@@ -220,8 +229,10 @@ const ViewPassword: React.FC = () => {
                             password={password}
                             showPassword={showPassword}
                             copied={copied}
+                            copiedUser={copiedUser}
                             onTogglePassword={() => setShowPassword(!showPassword)}
                             onCopyPassword={handleCopyPassword}
+                            onCopyUsername={handleCopyUsername}
                         />
                     )}
                 </motion.div>

@@ -33,7 +33,7 @@ const PasswordHeader: React.FC<PasswordHeaderProps> = ({
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={onEdit}
-                        className="flex items-center space-x-2 px-4 py-2 bg-gray-100 dark:bg-slate-700 hover:bg-emerald-50 dark:hover:bg-emerald-900/30 text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 rounded-xl font-medium transition-all duration-300 border-2 border-transparent hover:border-emerald-200 dark:hover:border-emerald-800"
+                        className="cursor-pointer flex items-center space-x-2 px-4 py-2 bg-gray-100 dark:bg-slate-700 hover:bg-emerald-50 dark:hover:bg-emerald-900/30 text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 rounded-xl font-medium transition-all duration-300 border-2 border-transparent hover:border-emerald-200 dark:hover:border-emerald-800"
                     >
                         <Edit className="w-4 h-4" />
                         <span>Edit</span>
@@ -42,7 +42,7 @@ const PasswordHeader: React.FC<PasswordHeaderProps> = ({
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={onDelete}
-                        className="p-3 bg-red-50 dark:bg-red-900/20 hover:bg-red-100 dark:hover:bg-red-900/40 text-red-600 dark:text-red-400 rounded-xl transition-all duration-300 border-2 border-transparent hover:border-red-200 dark:hover:border-red-800"
+                        className="cursor-pointer p-3 bg-red-50 dark:bg-red-900/20 hover:bg-red-100 dark:hover:bg-red-900/40 text-red-600 dark:text-red-400 rounded-xl transition-all duration-300 border-2 border-transparent hover:border-red-200 dark:hover:border-red-800"
                     >
                         <Trash2 className="w-4 h-4" />
                     </motion.button>

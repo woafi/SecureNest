@@ -17,16 +17,20 @@ interface PasswordViewModeProps {
     password: Password | null;
     showPassword: boolean;
     copied: boolean;
+    copiedUser: boolean;
     onTogglePassword: () => void;
     onCopyPassword: () => void;
+    onCopyUsername: () => void;
 }
 
 const PasswordViewMode: React.FC<PasswordViewModeProps> = ({
     password,
     showPassword,
     copied,
+    copiedUser,
     onTogglePassword,
-    onCopyPassword
+    onCopyPassword,
+    onCopyUsername
 }) => {
     return (
         <div className="space-y-6">
@@ -40,8 +44,20 @@ const PasswordViewMode: React.FC<PasswordViewModeProps> = ({
                     <label className="block text-sm font-semibold text-gray-600 dark:text-gray-400 mb-2">
                         Username / Email
                     </label>
-                    <div className="p-4 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-slate-900 dark:to-slate-800 rounded-xl border border-gray-200 dark:border-slate-700">
+                    <div className="p-4 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-slate-900 dark:to-slate-800 rounded-xl border border-gray-200 dark:border-slate-700 flex items-center justify-between">
                         <p className="font-mono text-lg text-gray-900 dark:text-white">{password.username}</p>
+                        <motion.button
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                            onClick={onCopyUsername}
+                            className="cursor-pointer p-2 hover:bg-emerald-100 dark:hover:bg-emerald-900/40 rounded-lg transition-all duration-300"
+                        >
+                            {copiedUser ? (
+                                <Check className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+                            ) : (
+                                <Copy className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+                            )}
+                        </motion.button>
                     </div>
                 </motion.div>
             )}
@@ -64,7 +80,7 @@ const PasswordViewMode: React.FC<PasswordViewModeProps> = ({
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                             onClick={onTogglePassword}
-                            className="p-2 hover:bg-emerald-100 dark:hover:bg-emerald-900/40 rounded-lg transition-all duration-300 text-gray-700 dark:text-gray-300"
+                            className="cursor-pointer p-2 hover:bg-emerald-100 dark:hover:bg-emerald-900/40 rounded-lg transition-all duration-300 text-gray-700 dark:text-gray-300"
                         >
                             {showPassword ? (
                                 <EyeOff className="w-5 h-5" />
@@ -76,7 +92,7 @@ const PasswordViewMode: React.FC<PasswordViewModeProps> = ({
                             whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.9 }}
                             onClick={onCopyPassword}
-                            className="p-2 hover:bg-emerald-100 dark:hover:bg-emerald-900/40 rounded-lg transition-all duration-300"
+                            className="cursor-pointer p-2 hover:bg-emerald-100 dark:hover:bg-emerald-900/40 rounded-lg transition-all duration-300"
                         >
                             {copied ? (
                                 <Check className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
