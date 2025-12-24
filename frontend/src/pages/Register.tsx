@@ -172,7 +172,7 @@ const Register: React.FC = () => {
                                 whileTap={{ scale: 0.9 }}
                                 type="button"
                                 onClick={() => setShowPassword(!showPassword)}
-                                className="absolute right-3 top-[45px] text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-300"
+                                className="absolute right-3 top-[45px] text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-300 cursor-pointer"
                             >
                                 {showPassword ? <FiEyeOff size={20} /> : <FiEye size={20} />}
                             </motion.button>
@@ -241,7 +241,7 @@ const Register: React.FC = () => {
                         whileTap={{ scale: 0.98 }}
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 dark:from-emerald-500 dark:to-teal-500 dark:hover:from-emerald-600 dark:hover:to-teal-600 text-white rounded-xl font-semibold shadow-lg shadow-emerald-500/30 hover:shadow-xl hover:shadow-emerald-500/40 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="w-full cursor-pointer py-3 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 dark:from-emerald-500 dark:to-teal-500 dark:hover:from-emerald-600 dark:hover:to-teal-600 text-white rounded-xl font-semibold shadow-lg shadow-emerald-500/30 hover:shadow-xl hover:shadow-emerald-500/40 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         {isSubmitting ? (
                             <motion.div
