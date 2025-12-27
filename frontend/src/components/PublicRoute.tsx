@@ -14,7 +14,7 @@ const PublicRoute: React.FC = () => {
         );
     }
 
-    // If not authenticated, redirect to login with return URL
+    // If authenticated, redirect to dashboard with return URL
     if (user) {
         return <Navigate to="/dashboard" replace />;
     }
