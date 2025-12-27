@@ -147,7 +147,7 @@ const AddPassword: React.FC = () => {
                             <label className="block text-sm font-semibold mb-2 text-gray-700 dark:text-gray-300">
                                 Password <span className="text-red-500">*</span>
                             </label>
-                            <div className="flex space-x-3">
+                            <div className="flex space-x-3 flex-wrap gap-2 sm:gap-0">
                                 <div className='flex items-center flex-1 relative'>
                                     <input
                                         type={isShown ? "text" : "password"}

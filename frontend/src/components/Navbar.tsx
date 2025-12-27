@@ -44,6 +44,8 @@ const Navbar: React.FC = () => {
                         </span>
                     </Link>
 
+
+
                     {/* Desktop Actions */}
                     <div className="hidden md:flex items-center space-x-3">
                         {/* Theme Toggle */}
@@ -53,7 +55,7 @@ const Navbar: React.FC = () => {
                             aria-label="Toggle theme"
                         >
                             {theme ? (
-                                <Sun className="w-5 h-5 text-gray-300 transition-transform duration-300 group-hover:rotate-90" />                                
+                                <Sun className="w-5 h-5 text-gray-300 transition-transform duration-300 group-hover:rotate-90" />
                             ) : (
                                 <Moon className="w-5 h-5 text-gray-700 dark:text-gray-300 transition-transform duration-300 group-hover:rotate-12" />
                             )}
@@ -83,39 +85,54 @@ const Navbar: React.FC = () => {
                         )}
                     </div>
 
-                    {/* Mobile Menu Button */}
-                    {user && (
-                        <motion.button
-                            whileTap={{ scale: 0.9 }}
-                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                            className="md:hidden p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-slate-800 transition-all duration-300"
-                            aria-label="Toggle mobile menu"
+                    <div className='flex md:hidden'>
+                        {/* Theme Toggle */}
+                        <button
+                            onClick={toggleTheme}
+                            className="cursor-pointer relative p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-slate-800 transition-all duration-300 hover:scale-110 active:scale-95 group"
+                            aria-label="Toggle theme"
                         >
-                            <AnimatePresence mode="wait">
-                                {isMobileMenuOpen ? (
-                                    <motion.div
-                                        key="close"
-                                        initial={{ rotate: -90, opacity: 0 }}
-                                        animate={{ rotate: 0, opacity: 1 }}
-                                        exit={{ rotate: 90, opacity: 0 }}
-                                        transition={{ duration: 0.2 }}
-                                    >
-                                        <X className="w-6 h-6 text-gray-700 dark:text-gray-300" />
-                                    </motion.div>
-                                ) : (
-                                    <motion.div
-                                        key="menu"
-                                        initial={{ rotate: 90, opacity: 0 }}
-                                        animate={{ rotate: 0, opacity: 1 }}
-                                        exit={{ rotate: -90, opacity: 0 }}
-                                        transition={{ duration: 0.2 }}
-                                    >
-                                        <Menu className="w-6 h-6 text-gray-700 dark:text-gray-300" />
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
-                        </motion.button>
-                    )}
+                            {theme ? (
+                                <Sun className="w-5 h-5 text-gray-300 transition-transform duration-300 group-hover:rotate-90" />
+                            ) : (
+                                <Moon className="w-5 h-5 text-gray-700 dark:text-gray-300 transition-transform duration-300 group-hover:rotate-12" />
+                            )}
+                        </button>
+
+                        {/* Mobile Menu Button */}
+                        {user && (
+                            <motion.button
+                                whileTap={{ scale: 0.9 }}
+                                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                                className="p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-slate-800 transition-all duration-300"
+                                aria-label="Toggle mobile menu"
+                            >
+                                <AnimatePresence mode="wait">
+                                    {isMobileMenuOpen ? (
+                                        <motion.div
+                                            key="close"
+                                            initial={{ rotate: -90, opacity: 0 }}
+                                            animate={{ rotate: 0, opacity: 1 }}
+                                            exit={{ rotate: 90, opacity: 0 }}
+                                            transition={{ duration: 0.2 }}
+                                        >
+                                            <X className="w-6 h-6 text-gray-700 dark:text-gray-300" />
+                                        </motion.div>
+                                    ) : (
+                                        <motion.div
+                                            key="menu"
+                                            initial={{ rotate: 90, opacity: 0 }}
+                                            animate={{ rotate: 0, opacity: 1 }}
+                                            exit={{ rotate: -90, opacity: 0 }}
+                                            transition={{ duration: 0.2 }}
+                                        >
+                                            <Menu className="w-6 h-6 text-gray-700 dark:text-gray-300" />
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </motion.button>
+                        )}
+                    </div>
                 </div>
             </div>
 
@@ -137,7 +154,7 @@ const Navbar: React.FC = () => {
                             className="px-4 py-4 space-y-3 transition-colors duration-700 bg-gray-50 dark:bg-slate-800/50"
                         >
                             {/* Theme Toggle Mobile */}
-                            <motion.button
+                            {/* <motion.button
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
                                 onClick={toggleTheme}
@@ -158,7 +175,7 @@ const Navbar: React.FC = () => {
                                         </span>
                                     </>
                                 )}
-                            </motion.button>
+                            </motion.button> */}
 
                             {/* Settings Mobile */}
                             <motion.div

@@ -84,7 +84,7 @@ const Settings: React.FC = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.2, type: "spring", bounce: 0.4 }}
-                    className="bg-white dark:bg-slate-800 transition-colors duration-700 rounded-2xl p-8 mb-6 shadow-xl border border-gray-200 dark:border-slate-700"
+                    className="hidden sm:block bg-white dark:bg-slate-800 transition-colors duration-700 rounded-2xl p-8 mb-6 shadow-xl border border-gray-200 dark:border-slate-700"
                 >
                     <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
                         Appearance
